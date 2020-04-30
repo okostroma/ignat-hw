@@ -1,0 +1,9 @@
+.buttonArea {
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
+}
+
+.text {
+    margin-right: 7px;
+}
