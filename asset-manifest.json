@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/message/static/css/main.9f5e2cd0.chunk.css",
-    "main.js": "/message/static/js/main.1d85d326.chunk.js",
-    "main.js.map": "/message/static/js/main.1d85d326.chunk.js.map",
-    "runtime-main.js": "/message/static/js/runtime-main.f40df361.js",
-    "runtime-main.js.map": "/message/static/js/runtime-main.f40df361.js.map",
-    "static/js/2.5bd34e42.chunk.js": "/message/static/js/2.5bd34e42.chunk.js",
-    "static/js/2.5bd34e42.chunk.js.map": "/message/static/js/2.5bd34e42.chunk.js.map",
-    "index.html": "/message/index.html",
-    "precache-manifest.b37570a34183298e857800c4f09daaeb.js": "/message/precache-manifest.b37570a34183298e857800c4f09daaeb.js",
-    "service-worker.js": "/message/service-worker.js",
-    "static/css/main.9f5e2cd0.chunk.css.map": "/message/static/css/main.9f5e2cd0.chunk.css.map",
-    "static/js/2.5bd34e42.chunk.js.LICENSE.txt": "/message/static/js/2.5bd34e42.chunk.js.LICENSE.txt",
-    "static/media/avatar.png": "/message/static/media/avatar.adf3f16b.png",
-    "static/media/logo.svg": "/message/static/media/logo.ee7cd8ed.svg"
+    "main.css": "/ignat-hw/static/css/main.9f5e2cd0.chunk.css",
+    "main.js": "/ignat-hw/static/js/main.84752267.chunk.js",
+    "main.js.map": "/ignat-hw/static/js/main.84752267.chunk.js.map",
+    "runtime-main.js": "/ignat-hw/static/js/runtime-main.c7fabed7.js",
+    "runtime-main.js.map": "/ignat-hw/static/js/runtime-main.c7fabed7.js.map",
+    "static/js/2.5bd34e42.chunk.js": "/ignat-hw/static/js/2.5bd34e42.chunk.js",
+    "static/js/2.5bd34e42.chunk.js.map": "/ignat-hw/static/js/2.5bd34e42.chunk.js.map",
+    "index.html": "/ignat-hw/index.html",
+    "precache-manifest.9ffc67c950a3aa335e503b3c3c6eaeb5.js": "/ignat-hw/precache-manifest.9ffc67c950a3aa335e503b3c3c6eaeb5.js",
+    "service-worker.js": "/ignat-hw/service-worker.js",
+    "static/css/main.9f5e2cd0.chunk.css.map": "/ignat-hw/static/css/main.9f5e2cd0.chunk.css.map",
+    "static/js/2.5bd34e42.chunk.js.LICENSE.txt": "/ignat-hw/static/js/2.5bd34e42.chunk.js.LICENSE.txt",
+    "static/media/avatar.png": "/ignat-hw/static/media/avatar.adf3f16b.png",
+    "static/media/logo.svg": "/ignat-hw/static/media/logo.ee7cd8ed.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f40df361.js",
+    "static/js/runtime-main.c7fabed7.js",
     "static/js/2.5bd34e42.chunk.js",
     "static/css/main.9f5e2cd0.chunk.css",
-    "static/js/main.1d85d326.chunk.js"
+    "static/js/main.84752267.chunk.js"
   ]
 }
