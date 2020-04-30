@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Monday from "./Monday";
+import Monday from "./components/Monday/Monday";
 import {HashRouter, Route} from "react-router-dom";
-import Nav from "./Nav";
+import Nav from "./components/Nav/Nav";
 
 
 class App extends React.Component {

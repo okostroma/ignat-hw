@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import MyName from "./components/MyName/MyName";
-import Message from "./components/Message/Message";
-import Avatar from "./components/Avatar/Avatar";
-import Names from "./Names";
-import Screen from "./Screen";
+import logo from '../../logo.svg';
+import '../../App.css';
+import MyName from "./MyName/MyName";
+import Message from "./Message/Message";
+import Avatar from "./Avatar/Avatar";
+import Names from "./ScreenArea/Names";
+import Screen from "./ScreenArea/Screen";
 import classes from './Monday.module.css'
 
 
