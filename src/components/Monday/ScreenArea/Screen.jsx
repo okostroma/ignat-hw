@@ -21,7 +21,7 @@ class Screen extends React.Component {
                         <Text counter={this.props.counter}/>
                     </div>
 
-                    <Button error={this.props.error} value={this.props.value} onAddName={this.props.onAddName}/>
+                    <Button onAddName={this.props.onAddName}/>
                 </div>
 
 

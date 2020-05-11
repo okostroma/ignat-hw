@@ -4,6 +4,7 @@ import './App.css';
 import Monday from "./components/Monday/Monday";
 import {HashRouter, Route} from "react-router-dom";
 import Nav from "./components/Nav/Nav";
+import Tuesday from "./components/Tuesday/Tuesday";
 
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
 
                 <div className='wrApp'>
                     <Route path='/monday' component={Monday} />
+                    <Route path='/tuesday' component={Tuesday} />
                 </div>
 
 
