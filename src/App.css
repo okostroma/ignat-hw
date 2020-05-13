@@ -13,6 +13,16 @@ body {
 
 }
 
+.AppTuesday {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.todoList {
+    width: 300px;
+}
+
 
 .message {
     color: darksalmon;
@@ -75,18 +85,18 @@ body {
 }
 
 
-.todoList {
-    width: 500px;
-    margin: 0 auto;
-}
+/*.todoList {*/
+/*    width: 500px;*/
+/*    margin: 0 auto;*/
+/*}*/
 
 .todoList > div {
     padding: 10px;
 }
 
-.todoList-task {
+/*.todoList-task {*/
 
-}
+/*}*/
 
 .filter-active {
     background-color: aqua;

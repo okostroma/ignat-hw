@@ -5,7 +5,8 @@ import '../../App.css';
 
 class TodoListTask extends React.Component {
     state = {
-        isEditMode: false
+        isEditMode: false,
+        isEditModePriority: false
     }
     activatedEditMode = () => {
         this.setState({
@@ -22,15 +23,37 @@ class TodoListTask extends React.Component {
     }
 
 
+    activatedEditModePriority = () => {
+        this.setState({
+            isEditModePriority: true
+        })
+
+    }
+
+    deActivatedEditModePriority = () => {
+        this.setState({
+            isEditModePriority: false
+        })
+
+    }
+
+
+
     onIsDoneChanged = (e) => {
-       this.props.changeStatus(this.props.task.id, e.currentTarget.checked)
+        this.props.changeStatus(this.props.task.id, e.currentTarget.checked)
     }
 
     onIsTitleChange = (e) => {
         this.props.changeTitle(this.props.task.id, e.currentTarget.value)
     }
 
-    isTaskDeleted = (e) => {
+    onIsPriorityChanged = (e) => {
+        this.props.changePriority(this.props.task.id,e.currentTarget.value)
+
+    }
+
+
+    isTaskDeleted = () => {
         this.props.deleteTask(this.props.task.id);
     }
 
@@ -38,18 +61,29 @@ class TodoListTask extends React.Component {
     render = () => {
         let checked = this.props.task.isDone === true ? 'done' : ''
         return (
-            <div className= {`todoList-task + ${checked}`}>
+            <div className={`todoList-task + ${checked}`}>
                 <input type="checkbox" checked={this.props.task.isDone} onChange={this.onIsDoneChanged}/>
-                {this.state.isEditMode ? <input onChange={this.onIsTitleChange} value={this.props.task.title} autoFocus={true}
-                                                onBlur={this.deActivatedEditMode}/> : <span onDoubleClick={this.activatedEditMode}>
+                {this.state.isEditMode ?
+                    <input onChange={this.onIsTitleChange} value={this.props.task.title} autoFocus={true}
+                           onBlur={this.deActivatedEditMode}/> : <span onDoubleClick={this.activatedEditMode}>
                     {this.props.task.id} - {this.props.task.title}</span>
                 }
-                 ,
-                <span>priority: {this.props.task.priority}</span> <button onClick={this.isTaskDeleted}> delete </button>
+                ,
+
+                <span>priority: {this.state.isEditModePriority ?
+                    <input onChange={this.onIsPriorityChanged} value={this.props.task.priority} autoFocus={true}
+                           onBlur={this.deActivatedEditModePriority}/> : <span onDoubleClick={this.activatedEditModePriority}> {this.props.task.priority} </span>
+                }
+                </span>
+
+
+                {/*<span>priority: {this.props.task.priority} </span>*/}
+                <button onClick={this.isTaskDeleted}> delete</button>
             </div>
         );
     }
 }
+
 TodoListTask.propTypes = {
     title: PropTypes.string,
     isDone: PropTypes.bool,

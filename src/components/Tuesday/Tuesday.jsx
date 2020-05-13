@@ -1,13 +1,14 @@
 import React from 'react';
 import '../../App.css';
-import TodoListHeader from "./TodoListHeader";
+import AddNewItemForm from "./AddNewItemForm";
 import TodoListTasks from "./TodoListTasks";
 import TodoListFooter from "./TodoListFooter";
-import PropTypes from 'prop-types';
+
+import TodoListTitle from "./TodoListTitle";
 import {restoreState, saveState} from "./stateMod";
 
 
-class App extends React.Component {
+class Tuesday extends React.Component {
 
 
     state = {
@@ -22,13 +23,14 @@ class App extends React.Component {
     };
     nextTaskId = 0;
 
+
     saveLocalStorage = () => {
-        saveState('state', this.state)
+        saveState('state-'+ this.props.id, this.state)
     }
 
 
     restoreLocalStorage = () => {
-        let stateNew = restoreState('state', this.state);
+        let stateNew = restoreState('state-' + this.props.id, this.state);
         this.setState(stateNew, () => {
             this.state.tasks.forEach(t => {
                     if (t.id >= this.nextTaskId) {
@@ -43,6 +45,7 @@ class App extends React.Component {
     componentDidMount() {
         this.restoreLocalStorage();
     }
+
 
     addTask = (newTitle) => {
 
@@ -71,6 +74,10 @@ class App extends React.Component {
 
     }
 
+    isTodoListDeleted = () => {
+        this.props.deleteTodoList(this.props.id);
+    }
+
 
     changeFilter = (newFilterValue) => {
         this.setState({
@@ -91,6 +98,8 @@ class App extends React.Component {
         }, this.saveLocalStorage);
     }
 
+
+
     changeStatus = (taskId, isDone) => {
         this.changeTask(taskId, {isDone: isDone})
 
@@ -99,6 +108,10 @@ class App extends React.Component {
     changeTitle = (taskId, title) => {
         this.changeTask(taskId, {title: title})
 
+    }
+
+    changePriority = (taskId, priority) => {
+        this.changeTask(taskId, {priority: priority})
     }
 
 
@@ -119,23 +132,19 @@ class App extends React.Component {
         })
 
         return (
-            <div className="App">
+
                 <div className="todoList">
-                    <TodoListHeader addTask={this.addTask}/>
-                    <TodoListTasks deleteTask={this.deleteTask} changeTitle={this.changeTitle} tasks={filteredTasks}
+                    <TodoListTitle title={this.props.title}/> <button onClick={this.isTodoListDeleted}> delete</button>
+                    <AddNewItemForm title={this.props.title} addItem={this.addTask}/>
+                    <TodoListTasks changePriority={this.changePriority} deleteTask={this.deleteTask} changeTitle={this.changeTitle} tasks={filteredTasks}
                                    changeStatus={this.changeStatus}/>
                     <TodoListFooter filerValue={this.state.filterValue} changeFilter={this.changeFilter}/>
 
                 </div>
-            </div>
         );
     }
 }
 
-App.propTypes = {
-    state: PropTypes.object,
-    onAddTaskClick: PropTypes.func
-}
 
-export default App;
+export default Tuesday;
 
