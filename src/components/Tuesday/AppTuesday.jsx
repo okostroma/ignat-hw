@@ -78,7 +78,7 @@ class AppTuesday extends React.Component {
 
 
         return (
-            <div>
+            <div className='tuesday'>
                 {this.state.loading ?
                     <div className='loading'><Loader /> </div>
                      :
