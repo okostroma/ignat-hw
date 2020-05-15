@@ -45,6 +45,11 @@ state = {
     }
 
 
+    loadingL = () => {
+        return 'L'
+    }
+
+
 
     render() {
 

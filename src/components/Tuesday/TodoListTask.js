@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../../App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
+
 
 
 class TodoListTask extends React.Component {
     state = {
         isEditMode: false,
-        isEditModePriority: false
+        isEditModePriority: false,
+        priority: ['high', 'medium', 'low']
     }
     activatedEditMode = () => {
         this.setState({
@@ -23,19 +28,19 @@ class TodoListTask extends React.Component {
     }
 
 
-    activatedEditModePriority = () => {
-        this.setState({
-            isEditModePriority: true
-        })
-
-    }
-
-    deActivatedEditModePriority = () => {
-        this.setState({
-            isEditModePriority: false
-        })
-
-    }
+    // activatedEditModePriority = () => {
+    //     this.setState({
+    //         isEditModePriority: true
+    //     })
+    //
+    // }
+    //
+    // deActivatedEditModePriority = () => {
+    //     this.setState({
+    //         isEditModePriority: false
+    //     })
+    //
+    // }
 
 
 
@@ -70,15 +75,24 @@ class TodoListTask extends React.Component {
                 }
                 ,
 
-                <span>priority: {this.state.isEditModePriority ?
-                    <input onChange={this.onIsPriorityChanged} value={this.props.task.priority} autoFocus={true}
-                           onBlur={this.deActivatedEditModePriority}/> : <span onDoubleClick={this.activatedEditModePriority}> {this.props.task.priority} </span>
-                }
-                </span>
+                {/*<span>priority: {this.state.isEditModePriority ?*/}
+                {/*    <input onChange={this.onIsPriorityChanged} value={this.props.task.priority} autoFocus={true}*/}
+                {/*           onBlur={this.deActivatedEditModePriority}/> : <span onDoubleClick={this.activatedEditModePriority}> {this.props.task.priority} </span>*/}
+                {/*}*/}
+                {/*</span>*/}
+
+                <span > priority:
+                        <select onChange={this.onIsPriorityChanged} value={this.props.task.priority}>
+                            <option value={this.state.priority[0]} >{this.state.priority[0]}</option>
+                            <option value={this.state.priority[1]} >{this.state.priority[1]}</option>
+                            <option value={this.state.priority[2]}>{this.state.priority[2]}</option>
+                        </select>
+                    {/*{this.props.task.priority}*/}
+                    </span>
 
 
                 {/*<span>priority: {this.props.task.priority} </span>*/}
-                <button onClick={this.isTaskDeleted}> delete</button>
+                <span onClick={this.isTaskDeleted}> <FontAwesomeIcon className='times' icon={faTimes}/> </span>
             </div>
         );
     }

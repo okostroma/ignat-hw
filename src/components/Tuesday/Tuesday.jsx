@@ -6,6 +6,8 @@ import TodoListFooter from "./TodoListFooter";
 
 import TodoListTitle from "./TodoListTitle";
 import {restoreState, saveState} from "./stateMod";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTimes} from '@fortawesome/free-solid-svg-icons'
 
 
 class Tuesday extends React.Component {
@@ -25,7 +27,7 @@ class Tuesday extends React.Component {
 
 
     saveLocalStorage = () => {
-        saveState('state-'+ this.props.id, this.state)
+        saveState('state-' + this.props.id, this.state)
     }
 
 
@@ -53,7 +55,7 @@ class Tuesday extends React.Component {
             id: this.nextTaskId,
             title: newTitle,
             isDone: false,
-            priority: "high"
+            priority: ""
         };
         this.nextTaskId++;
         let newTasks = [...this.state.tasks, newTask];
@@ -99,7 +101,6 @@ class Tuesday extends React.Component {
     }
 
 
-
     changeStatus = (taskId, isDone) => {
         this.changeTask(taskId, {isDone: isDone})
 
@@ -133,14 +134,18 @@ class Tuesday extends React.Component {
 
         return (
 
-                <div className="todoList">
-                    <TodoListTitle title={this.props.title}/> <button onClick={this.isTodoListDeleted}> delete</button>
-                    <AddNewItemForm title={this.props.title} addItem={this.addTask}/>
-                    <TodoListTasks changePriority={this.changePriority} deleteTask={this.deleteTask} changeTitle={this.changeTitle} tasks={filteredTasks}
-                                   changeStatus={this.changeStatus}/>
-                    <TodoListFooter filerValue={this.state.filterValue} changeFilter={this.changeFilter}/>
-
+            <div className="todoList">
+                <div className='header'>
+                    <TodoListTitle title={this.props.title}/> <span onClick={this.isTodoListDeleted}> <FontAwesomeIcon
+                    className='times-header' icon={faTimes}/></span>
                 </div>
+                <AddNewItemForm title={this.props.title} addItem={this.addTask}/>
+                <TodoListTasks changePriority={this.changePriority} deleteTask={this.deleteTask}
+                               changeTitle={this.changeTitle} tasks={filteredTasks}
+                               changeStatus={this.changeStatus}/>
+                <TodoListFooter filerValue={this.state.filterValue} changeFilter={this.changeFilter}/>
+
+            </div>
         );
     }
 }

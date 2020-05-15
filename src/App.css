@@ -20,7 +20,9 @@ body {
 }
 
 .todoList {
-    width: 300px;
+    max-width: 400px;
+    position: relative;
+    margin-right: 30px;
 }
 
 
@@ -115,4 +117,92 @@ button {
 }
 
 
+.times {
+    margin-left: 10px;
+    color: #000;
+    cursor: pointer;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.times-header {
+    margin-left: 10px;
+    color: #000;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    cursor: pointer;
+
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin: 0 auto;*/
+    margin-top: 150px;
+
+}
+
+
+.loader{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.three{
+    padding: 50px 0;
+}
+
+#loader-3:before, #loader-3:after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 10px);
+    background-color: lightcoral;
+    animation: squaremove 1s ease-in-out infinite;
+}
+
+#loader-3:after{
+    bottom: 0;
+    animation-delay: 0.5s;
+}
+
+@keyframes squaremove{
+    0%, 100%{
+        -webkit-transform: translate(0,0) rotate(0);
+        -ms-transform: translate(0,0) rotate(0);
+        -o-transform: translate(0,0) rotate(0);
+        transform: translate(0,0) rotate(0);
+    }
+
+    25%{
+        -webkit-transform: translate(40px,40px) rotate(45deg);
+        -ms-transform: translate(40px,40px) rotate(45deg);
+        -o-transform: translate(40px,40px) rotate(45deg);
+        transform: translate(40px,40px) rotate(45deg);
+    }
+
+    50%{
+        -webkit-transform: translate(0px,80px) rotate(0deg);
+        -ms-transform: translate(0px,80px) rotate(0deg);
+        -o-transform: translate(0px,80px) rotate(0deg);
+        transform: translate(0px,80px) rotate(0deg);
+    }
+
+    75%{
+        -webkit-transform: translate(-40px,40px) rotate(45deg);
+        -ms-transform: translate(-40px,40px) rotate(45deg);
+        -o-transform: translate(-40px,40px) rotate(45deg);
+        transform: translate(-40px,40px) rotate(45deg);
+    }
+}
 
