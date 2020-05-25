@@ -109,7 +109,8 @@ body {
 }
 
 .todoList-task.done {
-    opacity: 0.5;
+    /*opacity: 0.9;*/
+    color: darkcyan;
 }
 
 button {
@@ -210,4 +211,25 @@ button {
 .tuesday {
     margin-top: 25px;
 }
+
+.timeBlock {
+    display: none;
+    position: relative;
+}
+
+.todoList-task:hover .timeBlock {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: -10px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    padding: 5px 7px;
+    font-size: 10px;
+    z-index: 1;
+    opacity: 1;
+
+}
+
+
 

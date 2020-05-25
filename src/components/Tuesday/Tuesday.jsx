@@ -55,7 +55,14 @@ class Tuesday extends React.Component {
             id: this.nextTaskId,
             title: newTitle,
             isDone: false,
-            priority: ""
+            priority: "",
+            created: new Date().toLocaleTimeString('ru-RU', {
+                hour: '2-digit',
+                minute: '2-digit'}),
+            updated: '',
+            finished: ''
+
+
         };
         this.nextTaskId++;
         let newTasks = [...this.state.tasks, newTask];
@@ -102,17 +109,23 @@ class Tuesday extends React.Component {
 
 
     changeStatus = (taskId, isDone) => {
-        this.changeTask(taskId, {isDone: isDone})
+        this.changeTask(taskId, {isDone: isDone, finished: new Date().toLocaleTimeString('ru-RU', {
+                hour: '2-digit',
+                minute: '2-digit'})})
 
     }
 
     changeTitle = (taskId, title) => {
-        this.changeTask(taskId, {title: title})
+        this.changeTask(taskId, {title: title, updated: new Date().toLocaleTimeString('ru-RU', {
+                hour: '2-digit',
+                minute: '2-digit'})})
 
     }
 
     changePriority = (taskId, priority) => {
-        this.changeTask(taskId, {priority: priority})
+        this.changeTask(taskId, {priority: priority, updated:new Date().toLocaleTimeString('ru-RU', {
+                hour: '2-digit',
+                minute: '2-digit'})})
     }
 
 
