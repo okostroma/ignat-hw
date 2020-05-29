@@ -5,6 +5,8 @@ import Tuesday from "./Tuesday";
 import {restoreState, saveState} from "./stateMod";
 import load from './load.gif'
 import Loader from "./Loader";
+import store from '../../store'
+import {connect} from "react-redux";
 
 class AppTuesday extends React.Component {
     state = {
@@ -13,7 +15,7 @@ class AppTuesday extends React.Component {
             // {id:2, title:'Week tasks'},
             // {id:3, title:'Year tasks'}
         ],
-        loading: true
+        // loading: true
     }
 
     nextTodoListId = 0;
@@ -41,10 +43,11 @@ class AppTuesday extends React.Component {
     }
 
     componentDidMount() {
-        setTimeout(()=> {
-            this.setState({
-                loading: false
-            })
+        setTimeout(() => {
+            // this.setState({
+            //     loading: false
+            // })
+            this.props.setLoading(false)
         }, 3000)
         this.restoreState();
     }
@@ -74,14 +77,15 @@ class AppTuesday extends React.Component {
     }
 
     render = () => {
-        const todolist = this.state.todolists.map(tl => <Tuesday deleteTodoList={this.deleteTodoList} key={tl.id} id={tl.id} title={tl.title}/>)
+        const todolist = this.state.todolists.map(tl => <Tuesday deleteTodoList={this.deleteTodoList} key={tl.id}
+                                                                 id={tl.id} title={tl.title}/>)
 
 
         return (
             <div className='tuesday'>
-                {this.state.loading ?
-                    <div className='loading'><Loader /> </div>
-                     :
+                {this.props.loading ?
+                    <div className='loading'><Loader/></div>
+                    :
                     <div><AddNewItemForm addItem={this.addTodoList}/>
                         <div className="AppTuesday">
                             {todolist}
@@ -97,7 +101,27 @@ class AppTuesday extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        loading: state.loading
+    }
+}
 
-export default AppTuesday;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setLoading: (loading) => {
+            let action = {
+                type: 'SET_LOADING',
+                loading
+
+            }
+            dispatch(action)
+        }
+    }
+}
+
+const ConnectedAppTuesday = connect(mapStateToProps, mapDispatchToProps)(AppTuesday)
+
+export default ConnectedAppTuesday;
 
 

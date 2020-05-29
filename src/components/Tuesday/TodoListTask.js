@@ -86,7 +86,7 @@ class TodoListTask extends React.Component {
                 <div className='timeBlock'>
                     <span>created: {this.props.task.created}</span>
                     <span> updated: {this.props.task.updated}</span>
-                    {this.props.changeStatus ? <span> finished: {this.props.task.finished} </span> : ''}
+                    <span> finished: {this.props.task.finished} </span>
                 </div>
 
 
