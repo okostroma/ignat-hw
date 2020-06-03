@@ -55,29 +55,33 @@ class AppTuesday extends React.Component {
     addTodoList = (title) => {
         let todoList = {
             id: this.nextTodoListId,
-            title: title
+            title: title,
+            tasks: []
         }
         this.nextTodoListId++;
-        let newTodoList = [...this.state.todolists, todoList];
-        this.setState({
-            todolists: newTodoList
-        }, this.saveState)
+        // let newTodoList = [...this.state.todolists, todoList];
+        // this.setState({
+        //     todolists: newTodoList
+        // }, this.saveState)
+
+        this.props.addTodoList(todoList)
     }
 
     deleteTodoList = (todoListId) => {
 
-        let newTodoList = this.state.todolists.filter(t => {
-            return t.id !== todoListId;
-        });
-        this.setState({
-            todolists: newTodoList
-        }, this.saveState);
+        // let newTodoList = this.state.todolists.filter(t => {
+        //              return t.id !== todoListId;
+        //          });
+        //          this.setState({
+        //              todolists: newTodoList
+        //          }, this.saveState);
+        this.props.deleteTodoList(todoListId)
 
 
     }
 
     render = () => {
-        const todolist = this.state.todolists.map(tl => <Tuesday deleteTodoList={this.deleteTodoList} key={tl.id}
+        const todolist = this.props.todolists.map(tl => <Tuesday tasks={tl.tasks} deleteTodoList={this.deleteTodoList} key={tl.id}
                                                                  id={tl.id} title={tl.title}/>)
 
 
@@ -103,7 +107,8 @@ class AppTuesday extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.loading
+        loading: state.loading,
+        todolists: state.todolists
     }
 }
 
@@ -116,7 +121,24 @@ const mapDispatchToProps = (dispatch) => {
 
             }
             dispatch(action)
+        },
+        addTodoList: (newTodoList) => {
+            let action = {
+                type: 'ADD_TODOLIST',
+                newTodoList
+
+            }
+            dispatch(action)
+        },
+        deleteTodoList: (todoListId) => {
+            let action = {
+                type: 'DELETE_TODOLIST',
+                todoListId
+
+            }
+            dispatch(action)
         }
+
     }
 }
 
