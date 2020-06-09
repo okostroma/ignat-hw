@@ -6,6 +6,8 @@ import {HashRouter, Route} from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Tuesday from "./components/Tuesday/Tuesday";
 import AppTuesday from "./components/Tuesday/AppTuesday";
+import Wednesday from "./components/Wednesday/Wednesday";
+import {connect} from "react-redux";
 
 
 class App extends React.Component {
@@ -18,13 +20,14 @@ class App extends React.Component {
         return (
             <HashRouter>
 
-            <div className="App">
+            <div className={this.props.style.BodyClass}>
                 <Nav />
 
 
                 <div className='wrApp'>
                     <Route path='/monday' component={Monday} />
                     <Route path='/tuesday' component={AppTuesday} />
+                    <Route path='/wednesday' component={Wednesday} />
                 </div>
 
 
@@ -38,4 +41,10 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        style: state.settingsReducer.style
+    }
+}
+
+export default connect(mapStateToProps,null)(App);

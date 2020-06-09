@@ -1,7 +1,7 @@
-body {
-    background-color: aliceblue;
+/*body {*/
+/*    background-color: aliceblue;*/
 
-}
+/*}*/
 
 .App {
     font-family: cursive;
@@ -232,4 +232,14 @@ button {
 }
 
 
+.light {
+    background-color: aliceblue;
+}
 
+.dark {
+    background-color: #888888;
+}
+
+.purple {
+    background-color: lavender;
+}

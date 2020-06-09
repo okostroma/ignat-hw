@@ -107,8 +107,8 @@ class AppTuesday extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.loading,
-        todolists: state.todolists
+        loading: state.tuesdayPage.loading,
+        todolists: state.tuesdayPage.todolists
     }
 }
 
