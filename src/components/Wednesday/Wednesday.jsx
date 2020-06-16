@@ -4,6 +4,8 @@ import WednesdayInput from "./WednesdayInput";
 import {connect} from "react-redux";
 import { setThemeActionCreator} from "../../SettingsReducer";
 // import classes from './LightWednesday.module.css'
+import * as axios from 'axios'
+import {checkInputActionCreator} from "../../WednesdayReducer";
 
 
 class Wednesday extends React.Component {
@@ -23,6 +25,34 @@ class Wednesday extends React.Component {
         this.props.setLightTheme(id, picked, style)
 
     }
+
+    onButtonClick = () => {
+        return axios.post('https://neko-cafe-back.herokuapp.com/auth/test',{success: this.props.checked}).then(response => {
+            console.log(response.data)
+
+
+        })
+
+
+    }
+
+    tryCatch = async ( onButtonClick ) => {
+        try {
+            const response = await onButtonClick();
+            console.log('answer: ', response.data);
+            return response;
+        } catch (e) {
+            console.log('error: ', {...e});
+            return 'error';
+        }
+    }
+
+    checkInput = (e) => {
+
+        this.props.checkInput(e.currentTarget.checked)
+    }
+
+
 
 
 
@@ -44,19 +74,7 @@ class Wednesday extends React.Component {
                 </form>
 
                 <div className={`${classes.body}`}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Quisque velit lectus, semper quis tortor vestibulum, finibus
-                    mattis urna. Vestibulum dictum ante nec sem pharetra, in finibus nisi accumsan.
-                    Morbi elementum lorem at nulla rutrum gravida. Proin in est sit amet orci iaculis
-                    efficitur eu quis augue. Aenean laoreet vel urna ut scelerisque. Vestibulum facilisis
-                    enim felis, nec ornare diam dignissim ut. Nunc neque libero, faucibus sed ante nec,
-                    gravida bibendum risus.
-
-                    Suspendisse potenti. Phasellus in tincidunt arcu, in
-                    iaculis metus. Proin ac nunc in velit cursus placerat id at felis.
-                    Integer feugiat maximus nisi. Pellentesque a malesuada tellus, non semper dolor.
-                    Aenean malesuada elit hendrerit leo elementum, ac lacinia neque commodo.
-                    Sed malesuada enim sit amet pellentesque semper.
+                    <input onChange={this.checkInput} type='checkbox' checked={this.props.checked}/> <button onClick={()=> this.tryCatch(this.onButtonClick)}>Send</button>
                 </div>
 
 
@@ -69,7 +87,8 @@ class Wednesday extends React.Component {
 const mapStateToProps = (state) => {
     return {
         themes: state.settingsReducer.themes,
-        style: state.settingsReducer.style
+        style: state.settingsReducer.style,
+        checked: state.wednesdayPage.checked
     }
 }
 
@@ -77,7 +96,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setLightTheme: (id, picked, style) => {
             dispatch(setThemeActionCreator(id,picked,style))
-    }
+    },
+        checkInput: (checked) => {
+            dispatch(checkInputActionCreator(checked))
+        }
     }
 }
 
