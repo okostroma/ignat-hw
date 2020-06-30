@@ -34,7 +34,7 @@ const SettingsReducer = (state = initialState, action) => {
     }
 }
 
-export const setThemeActionCreator = (id, picked, style) => ({type:SET_THEME, id, picked, style })
+export const setTheme = (id, picked, style) => ({type:SET_THEME, id, picked, style })
 
 
 

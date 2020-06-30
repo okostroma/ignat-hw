@@ -159,6 +159,7 @@ button {
 
 .three{
     padding: 50px 0;
+    background-color: transparent;
 }
 
 #loader-3:before, #loader-3:after{
