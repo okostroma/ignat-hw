@@ -5,8 +5,8 @@ const instance = axios.create({
 });
 
 export const wednesdayAPI = {
-    post(checked) {
-        return instance.post('auth/test',{success: checked}).then(response => response.data)
+    post(answer) {
+        return instance.post('auth/test',{success: answer}).then(response => response.data)
     }
 }
 

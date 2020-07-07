@@ -14,3 +14,19 @@
     margin-top: 20px;
 }
 
+.answer {
+    font-family: cursive;
+    margin-top: 15px;
+}
+
+.ok {
+    font-size: 25px;
+    color: blueviolet;
+    font-weight: bolder;
+}
+
+.error {
+    font-size: 25px;
+    color: red;
+    font-weight: bolder;
+}

@@ -5,22 +5,16 @@ import {connect} from "react-redux";
 import {setTheme, setThemeActionCreator} from "../../SettingsReducer";
 // import classes from './LightWednesday.module.css'
 import * as axios from 'axios'
-import {checkInput, checkInputActionCreator, postThunk, toggleFetching} from "../../WednesdayReducer";
+import {checkInput, checkInputActionCreator, postThunk, setAnswer, toggleFetching} from "../../WednesdayReducer";
 import {tryCatch, wednesdayAPI} from "../../api/api";
 import Swal from 'sweetalert2'
 import Loader from "../Tuesday/Loader";
-import PreLoader from "./PreLoader";
 
 
 class Wednesday extends React.Component {
 
     state = {
-        // themes: [
-        //     {id: 1, name: 'light', picked: true},
-        //     {id: 2, name: 'dark', picked: false},
-        //     {id: 3, name: 'purple', picked: false}
-        // ],
-        // style: ''
+
     }
 
 
@@ -32,28 +26,17 @@ class Wednesday extends React.Component {
 
     onButtonClick = () => {
         this.props.postThunk(this.props.checked)
-        if (!this.props.checked) {
-            return Swal.fire({
-                title: 'Error!',
-                text: 'Do you want to continue',
-                icon: 'error',
-                confirmButtonText: 'Yes'
-            })
-
-        }
+        // if (!this.props.checked) {
+        //     return Swal.fire({
+        //         title: 'Error!',
+        //         text: 'Do you want to continue',
+        //         icon: 'error',
+        //         confirmButtonText: 'Yes'
+        //     })
+        //
+        // }
     }
 
-
-    // tryCatch = async ( onButtonClick ) => {
-    //     try {
-    //         const response = await onButtonClick();
-    //         console.log('answer: ', response.data);
-    //         return response;
-    //     } catch (e) {
-    //         console.log('error: ', {...e});
-    //         return 'error';
-    //     }
-    // }
 
     checkInput = (e) => {
 
@@ -69,9 +52,8 @@ class Wednesday extends React.Component {
                                    picked={t.picked}/>
         })
 
-        if (this.props.isFetching && this.props.checked) {
-            return <Loader/>
-        }
+         let ok = this.props.serverAnswer === 'OK:-)' ? classes.ok : ''
+         let error = this.props.serverAnswer === 'ERROR!!!' ? classes.error : ''
 
 
         return (
@@ -81,13 +63,17 @@ class Wednesday extends React.Component {
                 <form>
                     {themes}
                 </form>
+                {this.props.isFetching ? <Loader/> : ''}
+
+                <div className={`${classes.answer} ${ok} ${error}`}>{this.props.serverAnswer}</div>
 
                 <div className={`${classes.body}`}>
                     <input onChange={this.checkInput} type='checkbox' checked={this.props.checked}/>
-                    <button disabled={this.props.isFetching && this.props.checked} onClick={() =>
+                    <button disabled={this.props.isFetching} onClick={() =>
                         tryCatch(this.onButtonClick)}>Send
                     </button>
                 </div>
+
 
 
             </div>
@@ -101,23 +87,9 @@ const mapStateToProps = (state) => {
         themes: state.settingsReducer.themes,
         style: state.settingsReducer.style,
         checked: state.wednesdayPage.checked,
-        isFetching: state.wednesdayPage.isFetching
+        isFetching: state.wednesdayPage.isFetching,
+        serverAnswer: state.wednesdayPage.serverAnswer
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         setLightTheme: (id, picked, style) => {
-//             dispatch(setThemeActionCreator(id, picked, style))
-//         },
-//         checkInput: (checked) => {
-//             dispatch(checkInputActionCreator(checked))
-//         },
-//         toggleFetching: (isFetching) => {
-//             dispatch(toggleFetching(isFetching))
-//         },
-//         postThunk
-//     }
-// }
-
-export default connect(mapStateToProps, {setTheme, checkInput, postThunk})(Wednesday);
+export default connect(mapStateToProps, {setTheme, checkInput, postThunk, setAnswer})(Wednesday);
