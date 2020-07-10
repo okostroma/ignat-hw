@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4d1b625331c9553a6af9732792b6893f",
+    "revision": "97dc2252ae85350ef1b18ebee3cefbe6",
     "url": "/ignat-hw/index.html"
   },
   {
-    "revision": "2733588e0e632b34601e",
-    "url": "/ignat-hw/static/css/main.4dfff953.chunk.css"
+    "revision": "029a3353e51ef52a19a6",
+    "url": "/ignat-hw/static/css/main.5190445f.chunk.css"
   },
   {
-    "revision": "7538098c553ea1f7fb8e",
-    "url": "/ignat-hw/static/js/2.40c5169e.chunk.js"
+    "revision": "878d0327c8ac08761276",
+    "url": "/ignat-hw/static/js/2.2844c51e.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/ignat-hw/static/js/2.40c5169e.chunk.js.LICENSE.txt"
+    "url": "/ignat-hw/static/js/2.2844c51e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2733588e0e632b34601e",
-    "url": "/ignat-hw/static/js/main.49082a24.chunk.js"
+    "revision": "029a3353e51ef52a19a6",
+    "url": "/ignat-hw/static/js/main.4af3597e.chunk.js"
   },
   {
     "revision": "01f6f60967fc620ea2f7",
