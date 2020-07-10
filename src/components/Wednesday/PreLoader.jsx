@@ -2,7 +2,7 @@ import React from "react";
 import classes from './PreLoader.module.css'
 
 
-const PreLoader = (props) => {
+const PreLoader = () => {
 
 
     return <div className={`${classes.loader} ${classes.loaderItem}`}>

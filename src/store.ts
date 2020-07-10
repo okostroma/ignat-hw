@@ -10,6 +10,10 @@ const reducers = combineReducers({
     wednesdayPage: WednesdayReducer
 })
 
+type ReducersType = typeof reducers;
+export type AppStateType = ReturnType<ReducersType>
+
+
 const store = createStore(reducers, applyMiddleware(thunk));
 
 

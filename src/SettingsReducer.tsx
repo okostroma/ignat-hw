@@ -3,8 +3,17 @@ import dark from '././components/Wednesday/DarkWednesday.module.css'
 import purple from '././components/Wednesday/PurlpeWednesday.module.css'
 
 const SET_THEME = 'SET_THEME';
+type initialStateType = {
+    themes: Array<ThemeType>,
+    style: any
+}
 
-const initialState = {
+type ThemeType = {
+    id: number
+    name: string
+    picked: boolean
+}
+const initialState :initialStateType  = {
     themes: [
         {id: 1, name: 'light', picked: true},
         {id: 2, name: 'dark', picked: false},
@@ -14,7 +23,7 @@ const initialState = {
 }
 
 
-const SettingsReducer = (state = initialState, action) => {
+const SettingsReducer = (state:initialStateType = initialState, action:setThemeType) => {
 
     switch (action.type) {
         case SET_THEME: {
@@ -34,7 +43,14 @@ const SettingsReducer = (state = initialState, action) => {
     }
 }
 
-export const setTheme = (id, picked, style) => ({type:SET_THEME, id, picked, style })
+type setThemeType = {
+    type: typeof SET_THEME
+    id: number,
+    picked: boolean,
+    style: any
+}
+
+export const setTheme = (id: number, picked: boolean, style: any):setThemeType => ({type:SET_THEME, id, picked, style })
 
 
 
